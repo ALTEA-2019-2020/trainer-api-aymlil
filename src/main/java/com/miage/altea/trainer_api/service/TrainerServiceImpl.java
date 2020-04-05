@@ -6,24 +6,24 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TrainerServiceImpl implements TrainerService{
-    private TrainerRepository trainerRepository;
+    private TrainerRepository trainerR;
 
-    public TrainerServiceImpl(TrainerRepository trainerRepository) {
-        this.trainerRepository = trainerRepository;
+    public TrainerServiceImpl(TrainerRepository trainerR) {
+        this.trainerR = trainerR;
     }
 
     @Override
     public Iterable<Trainer> getAllTrainers() {
-        return this.trainerRepository.findAll();
+        return this.trainerR.findAll();
     }
 
     @Override
     public Trainer getTrainer(String name) {
-        return this.trainerRepository.findById(name).orElse(null);
+        return this.trainerR.findById(name).orElse(null);
     }
 
     @Override
     public Trainer createTrainer(Trainer trainer) {
-        return this.trainerRepository.save(trainer);
+        return this.trainerR.save(trainer);
     }
 }

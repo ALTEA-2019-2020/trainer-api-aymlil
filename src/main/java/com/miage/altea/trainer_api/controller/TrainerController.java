@@ -10,24 +10,24 @@ import org.springframework.web.bind.annotation.*;
 public class TrainerController {
 
     @Autowired
-    private final TrainerService trainerService;
+    private final TrainerService trainerS;
 
-    TrainerController(TrainerService trainerService){
-        this.trainerService = trainerService;
+    TrainerController(TrainerService trainerS){
+        this.trainerS = trainerS;
     }
 
     @GetMapping("/")
     Iterable<Trainer> getAllTrainers(){
-        return this.trainerService.getAllTrainers();
+        return this.trainerS.getAllTrainers();
     }
 
     @GetMapping("/{name}")
     Trainer getTrainer(@PathVariable String name){
-        return this.trainerService.getTrainer(name);
+        return this.trainerS.getTrainer(name);
     }
 
     @PostMapping("/")
     public Trainer createTrainer(@RequestBody Trainer trainer){
-        return trainerService.createTrainer(trainer);
+        return trainerS.createTrainer(trainer);
     }
 }
